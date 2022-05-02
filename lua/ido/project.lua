@@ -17,7 +17,7 @@ end
 function project.select()
     project.root = vim.fn.fnamemodify(project.root, ":p")
 
-    if std.is_inside_git() then
+    if not project.current and std.is_inside_git() then
         local current = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
         if vim.startswith(current, project.root) then
             project.current = current:sub(project.root:len() + 1)
