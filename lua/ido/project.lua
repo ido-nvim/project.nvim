@@ -58,19 +58,4 @@ function project.buffer()
     end
 end
 
-function project.compile()
-    if not project.current then
-        project.select()
-        if not project.current then
-            return
-        end
-    end
-
-    if vim.fn.exists(":Compile") == 0 then
-        vim.api.nvim_err_writeln("project.compile: shoumodip/compile.nvim not installed")
-    end
-
-    vim.cmd(":Compile")
-end
-
 return project

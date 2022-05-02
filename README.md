@@ -27,10 +27,9 @@ Set the root directory where projects will be searched. Default is `~/code`.
 require("ido.project").root = "~/programming"
 ```
 
-| Command                   | Description                                                                                 |
-| ------------------------- | ------------------------------------------------------------------------------------------- |
-| `:Ido project.open`       | Open a project                                                                              |
-| `:Ido project.find_files` | Find files recursively in the current project                                               |
-| `:Ido project.buffer`     | Switch buffers in the current project                                                       |
-| `:Ido project.compile`    | Dispatch [compile.nvim](https://github.com/shoumodip/compile.nvim) in the project directory |
-| `:Ido project.select`     | Select a project                                                                            |
+| Command                   | Description                                    |
+| ------------------------- | ---------------------------------------------- |
+| `:Ido project.open`       | Open a project                                 |
+| `:Ido project.find_files` | Find files recursively in the current project  |
+| `:Ido project.buffer`     | Switch buffers in the current project          |
+| `:Ido project.select`     | Select a project                               |
