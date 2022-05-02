@@ -17,6 +17,14 @@ end
 function project.select()
     project.root = vim.fn.fnamemodify(project.root, ":p")
 
+    if std.is_inside_git() then
+        local current = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
+        if vim.startswith(current, project.root) then
+            project.current = current:sub(project.root:len() + 1)
+            return
+        end
+    end
+
     local items = vim.fn.systemlist("find '"..project.root:gsub("'", "'\"'\"'").."' -name .git -type d -prune")
     items = vim.tbl_map(function (path)
         return vim.fn.fnamemodify(path:sub(project.root:len() + 1), ":h")
