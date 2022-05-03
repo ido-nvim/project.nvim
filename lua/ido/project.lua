@@ -31,14 +31,15 @@ function project.select()
     end, items)
 
     project.current = ido.start(items, {prompt = "Project: ", accept_query = true})
-
-    local fullpath = project.root..project.current
-    if vim.fn.isdirectory(fullpath) == 0 then
-        vim.fn.mkdir(fullpath, "p")
-        vim.fn.chdir(fullpath)
-        if os.execute("git init") ~= 0 then
-            vim.api.nvim_err_writeln("project.select: could not create Git repository")
-            project.current = nil
+    if project.current then
+        local fullpath = project.root..project.current
+        if vim.fn.isdirectory(fullpath) == 0 then
+            vim.fn.mkdir(fullpath, "p")
+            vim.fn.chdir(fullpath)
+            if os.execute("git init") ~= 0 then
+                vim.api.nvim_err_writeln("project.select: could not create Git repository")
+                project.current = nil
+            end
         end
     end
 end
